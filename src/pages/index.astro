@@ -31,6 +31,9 @@ import { profile } from '../data/profile.js';
         </h1>
         <p class="lede">{profile.bio}</p>
         <p class="meta">{profile.currentRole} at {profile.currentCompany} · {profile.location}</p>
+        {profile.availability && (
+          <p class="status"><span class="dot" />{profile.availability}</p>
+        )}
         <div class="cta">
           <a class="btn primary" href="#work">See The Work</a>
           <a class="btn" href={profile.links[0].href} target="_blank" rel="noopener">{profile.primaryCta}</a>
@@ -41,16 +44,29 @@ import { profile } from '../data/profile.js';
         <h2><span class="num">1</span>Selected Work</h2>
         <div class="cards">
           {
-            profile.projects.map((p) => (
-              <article class="card">
-                <h3>
-                  {p.name}
-                  <span class="arrow">-&gt;</span>
-                </h3>
-                <p>{p.blurb}</p>
-                <p class="card-meta">{p.meta}</p>
-              </article>
-            ))
+            profile.projects.map((p) => {
+              const Tag = p.href ? 'a' : 'article';
+              const linkProps = p.href
+                ? { href: p.href, target: '_blank', rel: 'noopener' }
+                : {};
+              return (
+                <Tag class:list={['card', { linked: p.href }]} {...linkProps}>
+                  <h3>
+                    {p.name}
+                    {p.href && <span class="arrow">-&gt;</span>}
+                  </h3>
+                  <p>{p.blurb}</p>
+                  {p.stack && (
+                    <p class="card-stack">
+                      {p.stack.map((s) => (
+                        <span class="chip">{s}</span>
+                      ))}
+                    </p>
+                  )}
+                  <p class="card-meta">{p.meta}</p>
+                </Tag>
+              );
+            })
           }
         </div>
       </section>
@@ -213,6 +229,23 @@ import { profile } from '../data/profile.js';
     color: var(--bg);
   }
 
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  .dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+
   /* ---------- sections ---------- */
   .section {
     margin-bottom: clamp(3.5rem, 9vw, 5.5rem);
@@ -289,6 +322,29 @@ import { profile } from '../data/profile.js';
     margin: 0;
     color: var(--muted);
     font-size: 0.9375rem;
+  }
+
+  .card.linked {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-stack {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.9rem !important;
+  }
+
+  .chip {
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--dim);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    white-space: nowrap;
   }
 
   .card-meta {
