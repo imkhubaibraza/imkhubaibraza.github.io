@@ -1,0 +1,394 @@
+---
+import { profile } from '../data/profile.js';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{profile.name} — {profile.title}</title>
+    <meta
+      name="description"
+      content={`${profile.name} — ${profile.title} in ${profile.location}. ${profile.bioShort}`}
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <h1>
+          {
+            profile.hero.lines.map((line, i) => (
+              <span class:list={['line', { muted: i >= profile.hero.mutedFrom }]}>{line}</span>
+            ))
+          }
+        </h1>
+        <p class="lede">{profile.bio}</p>
+        <p class="meta">{profile.currentRole} at {profile.currentCompany} · {profile.location}</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">See The Work</a>
+          <a class="btn" href={profile.links[0].href} target="_blank" rel="noopener">{profile.primaryCta}</a>
+        </div>
+      </header>
+
+      <section id="work" class="section">
+        <h2><span class="num">1</span>Selected Work</h2>
+        <div class="cards">
+          {
+            profile.projects.map((p) => (
+              <article class="card">
+                <h3>
+                  {p.name}
+                  <span class="arrow">-&gt;</span>
+                </h3>
+                <p>{p.blurb}</p>
+                <p class="card-meta">{p.meta}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="section">
+        <h2><span class="num">2</span>What I Work With</h2>
+        <dl class="skills">
+          {
+            profile.skillGroups.map((g) => (
+              <div class="skill-row">
+                <dt>{g.label}</dt>
+                <dd>
+                  {g.items.map((item) => (
+                    <span class="tag">{item}</span>
+                  ))}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <section class="section">
+        <h2><span class="num">3</span>Elsewhere</h2>
+        <p class="section-lede">
+          Open to senior AI engineering work — voice agents, LLM systems, and the infrastructure
+          around them.
+        </p>
+        <div class="links">
+          {
+            profile.links.map((l) => (
+              <a class="link-card" href={l.href} target="_blank" rel="noopener">
+                <span class="link-label">
+                  {l.label}
+                  <span class="arrow">-&gt;</span>
+                </span>
+                <span class="link-note">{l.note}</span>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+
+      <footer>
+        <span>{profile.name}</span>
+        <span class="dim">© {profile.year}</span>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: oklch(0.141 0.005 285.823);
+    --fg: oklch(0.985 0 0);
+    --muted: oklch(0.64 0.008 286);
+    --dim: oklch(0.5 0.008 286);
+    --border: oklch(0.26 0.008 286);
+    --card: oklch(0.178 0.006 286);
+    --accent: oklch(0.78 0.13 158);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(4rem, 12vw, 9rem) clamp(1.25rem, 5vw, 2rem) 4rem;
+  }
+
+  a {
+    color: inherit;
+  }
+</style>
+
+<style>
+  /* ---------- hero ---------- */
+  .hero {
+    margin-bottom: clamp(4.5rem, 12vw, 7.5rem);
+  }
+
+  h1 {
+    margin: 0 0 1.75rem;
+    font-size: clamp(2rem, 7vw, 3rem);
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+
+  .line {
+    display: block;
+  }
+
+  .line.muted {
+    color: var(--muted);
+  }
+
+  .lede {
+    margin: 0 0 0.75rem;
+    max-width: 34rem;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  .meta {
+    margin: 0 0 2rem;
+    color: var(--dim);
+    font-size: 0.875rem;
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--muted);
+    background: var(--card);
+  }
+
+  .btn.primary {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+  }
+
+  .btn.primary:hover {
+    background: var(--muted);
+    border-color: var(--muted);
+    color: var(--bg);
+  }
+
+  /* ---------- sections ---------- */
+  .section {
+    margin-bottom: clamp(3.5rem, 9vw, 5.5rem);
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 0 0 1.75rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .num {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--dim);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .section-lede {
+    margin: -0.75rem 0 1.75rem;
+    max-width: 34rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  /* ---------- project cards ---------- */
+  .cards {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .card {
+    padding: 1.35rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    transition: border-color 0.15s ease;
+  }
+
+  .card:hover {
+    border-color: var(--muted);
+  }
+
+  .card h3 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0 0 0.55rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .arrow {
+    color: var(--accent);
+    font-size: 0.85em;
+    transition: transform 0.15s ease;
+  }
+
+  .card:hover .arrow,
+  .link-card:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .card-meta {
+    margin-top: 0.85rem !important;
+    color: var(--dim) !important;
+    font-size: 0.8125rem !important;
+  }
+
+  /* ---------- skills ---------- */
+  .skills {
+    margin: 0;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .skill-row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  dt {
+    color: var(--dim);
+    font-size: 0.8125rem;
+    padding-top: 0.3rem;
+  }
+
+  dd {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  /* ---------- links ---------- */
+  .links {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1.1rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .link-card:hover {
+    border-color: var(--muted);
+  }
+
+  .link-label {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .link-note {
+    color: var(--dim);
+    font-size: 0.8125rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8125rem;
+  }
+
+  .dim {
+    color: var(--dim);
+  }
+
+  @media (max-width: 34rem) {
+    .skill-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    dt {
+      padding-top: 0;
+    }
+  }
+</style>
