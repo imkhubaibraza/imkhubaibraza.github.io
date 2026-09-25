@@ -73,6 +73,9 @@ import { profile } from '../data/profile.js';
 
       <section class="section">
         <h2><span class="num">2</span>What I Work With</h2>
+        <div class="expertise personal-story">
+          {profile.expertise.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
         <dl class="skills">
           {
             profile.skillGroups.map((g) => (
@@ -87,10 +90,56 @@ import { profile } from '../data/profile.js';
             ))
           }
         </dl>
+        <dl class="skills background">
+          {profile.background.map((item) => (
+            <div class="skill-row">
+              <dt>{item.label}</dt>
+              <dd>{item.detail}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section class="section" aria-labelledby="experience-heading">
+        <h2 id="experience-heading"><span class="num">3</span>Experience</h2>
+        <div class="history">
+          {profile.experience.map((job) => (
+            <article class="history-entry">
+              <h3>{job.company}</h3>
+              <p class="history-meta">{job.context}</p>
+              <ul class="roles">
+                {job.roles.map((role) => (
+                  <li><strong>{role.title}</strong><span>{role.dates}</span></li>
+                ))}
+              </ul>
+              {job.summary && <p class="history-summary">{job.summary}</p>}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="certifications-heading">
+        <h2 id="certifications-heading"><span class="num">4</span>Certifications</h2>
+        <ul class="certifications">
+          {profile.certifications.map((cert) => (
+            <li>
+              <h3>{cert.name}</h3>
+              <p>{cert.issuer} · {cert.issued}</p>
+              {cert.credential && <p class="credential">Credential ID: {cert.credential}</p>}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section class="section">
-        <h2><span class="num">3</span>Elsewhere</h2>
+        <h2><span class="num">5</span>Beyond Work</h2>
+        <div class="personal-story">
+          <p>{profile.personal.interests}</p>
+          <p>{profile.personal.curiosity}</p>
+          <h3>Helping the next generation</h3>
+          <p>{profile.personal.mentoring}</p>
+        </div>
+        <h3 class="contact-heading">Let’s connect</h3>
         <p class="section-lede">
           Open to senior AI engineering work — voice agents, LLM systems, and the infrastructure
           around them.
@@ -367,6 +416,18 @@ import { profile } from '../data/profile.js';
     align-items: start;
   }
 
+  .background {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .background dd {
+    padding-top: 0.3rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
   dt {
     color: var(--dim);
     font-size: 0.8125rem;
@@ -389,6 +450,90 @@ import { profile } from '../data/profile.js';
   }
 
   /* ---------- links ---------- */
+  .history-entry + .history-entry,
+  .certifications li + li {
+    border-top: 1px solid var(--border);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .history h3,
+  .certifications h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .history-meta,
+  .certifications p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  .roles,
+  .certifications {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .roles li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    margin-top: 0.85rem;
+    font-size: 0.9375rem;
+  }
+
+  .roles strong {
+    font-weight: 500;
+  }
+
+  .roles span,
+  .history-summary {
+    color: var(--muted);
+  }
+
+  .history-summary {
+    margin: 1rem 0 0;
+    font-size: 0.9375rem;
+  }
+
+  .certifications .credential {
+    margin-top: 0.35rem;
+    font-size: 0.8125rem;
+    overflow-wrap: anywhere;
+  }
+
+  .personal-story {
+    max-width: 65ch;
+    margin-bottom: 2rem;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  .personal-story p {
+    margin: 0;
+  }
+
+  .personal-story p + p {
+    margin-top: 1rem;
+  }
+
+  .personal-story h3,
+  .contact-heading {
+    margin: 2rem 0 0.75rem;
+    color: var(--fg);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .contact-heading + .section-lede {
+    margin-top: 0;
+  }
+
   .links {
     display: grid;
     gap: 0.75rem;
