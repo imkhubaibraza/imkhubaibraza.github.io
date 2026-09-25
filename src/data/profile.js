@@ -8,10 +8,11 @@ export const profile = {
   location: 'Lahore, Pakistan',
   currentRole: 'AI Solution Architect',
   currentCompany: 'CloudCX',
+  workLocation: 'London, UK · Remote',
   availability: 'Available for senior AI engineering work',
 
   hero: {
-    lines: ["I'm Khubaib.", 'I build AI systems', 'and ship them to production.'],
+    lines: ["I'm Khubaib.", 'I build AI that speaks,', 'reasons, and takes action.'],
     // Index from which the remaining headline lines render muted.
     mutedFrom: 2,
   },
