@@ -55,13 +55,6 @@ export const profile = {
       meta: 'CloudCX · Real-time voice AI',
     },
     {
-      name: 'LLM Voice Support Line',
-      blurb:
-        'An automated phone support line that answers, understands and resolves customer calls end to end — LLM reasoning wired into a live telephony backend with streaming transcription, so callers talk instead of pressing keys.',
-      stack: ['OpenAI', 'Twilio', 'Streaming STT', 'Python'],
-      meta: 'Design & build · 2023 — 2024',
-    },
-    {
       name: 'Invoice OCR Pipeline',
       blurb:
         'An OCR pipeline that reads invoices and pulls structured fields out of them, replacing manual data entry in a high-volume document workflow. Trained and served on SageMaker, containerised for repeatable deployment.',
@@ -83,10 +76,10 @@ export const profile = {
     { company: 'CloudCX', context: 'Contract · Remote · Greater London, UK', roles: [
       { title: 'AI Solution Architect', dates: 'Aug 2025 — Present' },
       { title: 'Senior Software Engineer', dates: 'Apr 2023 — Aug 2025' },
-    ] },
+    ], summary: 'Founding engineer at CloudCX, helping grow the business from £0 to £1 million in annual recurring revenue (ARR). Built agentic AI systems, real-time voice agents, and enterprise automation.' },
     { company: 'Metric', context: 'Full-time · Hybrid · Islamabad, Pakistan', roles: [
       { title: 'Head of Engineering', dates: 'Nov 2021 — Feb 2023' },
-    ], summary: 'Joined as the second employee in the new tech team and helped grow engineering from 1 to 10 people. Established hiring and onboarding processes, improved releases and CI/CD with Jenkins, and resolved Firestore database performance issues.' },
+    ], summary: 'Helped scale Metric from 0 to 100,000 app downloads as Head of Engineering. Joined as the second employee in the new tech team and helped grow engineering from 1 to 10 people. Established hiring and onboarding processes, improved releases and CI/CD with Jenkins, and resolved Firestore database performance issues.' },
     { company: 'Upwork', context: 'Freelance', roles: [
       { title: 'Top Rated Freelancer', dates: 'Dec 2020 — Apr 2022' },
     ] },
