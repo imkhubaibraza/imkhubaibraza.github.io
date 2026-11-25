@@ -114,12 +114,12 @@ export const profile = {
     { label: 'BSc Computer Science', detail: 'Government College University, Lahore · 2015–2019' },
   ],
 
+  // As listed on the Toptal profile.
   certifications: [
-    { name: 'Introduction to Machine Learning in Production', issuer: 'DeepLearning.AI', issued: 'Jul 2021', credential: 'AZTENR9E8JFU' },
-    { name: 'Deep Learning Nanodegree', issuer: 'Udacity', issued: 'Sep 2020', credential: 'YX3PJDKM' },
-    { name: 'AWS Machine Learning Scholarship Program', issuer: 'Udacity', issued: 'Aug 2020' },
+    { name: 'Machine Learning in Production', issuer: 'Coursera', issued: 'Jul 2021', credential: 'AZTENR9E8JFU' },
+    { name: 'AWS Machine Learning Engineer Scholarship Program', issuer: 'Udacity', issued: 'Aug 2020' },
     { name: 'Getting Started with AWS Machine Learning', issuer: 'Coursera', issued: 'May 2020' },
-    { name: 'Machine Learning', issuer: 'OpenDataScience [ods.ai]', issued: 'Sep 2019' },
+    { name: 'Deep Learning Nanodegree', issuer: 'Udacity', issued: 'Oct 2019', credential: 'YX3PJDKM' },
     { name: 'Introduction to Data Science in Python', issuer: 'Coursera', issued: 'Aug 2018' },
   ],
 
