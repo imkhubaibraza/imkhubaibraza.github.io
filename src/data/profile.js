@@ -49,6 +49,18 @@ export const profile = {
       href: 'https://avoxa.app',
     },
     {
+      name: 'In-House Browser Automation Platform',
+      blurb:
+        'Browser automation infrastructure built in house to replace paid hosted-browser services such as Browserbase and Kernel. The browsers run in Docker containers on our own AWS Fargate, which cut the cost from about $10,000 to $500 and keeps sessions and data inside our own cloud account.',
+      flow: [
+        'Each automation job gets its own browser in a Docker container.',
+        'Containers run on AWS Fargate, so there are no servers to manage and capacity follows demand.',
+        'The same setup scales out to run load tests when needed.',
+      ],
+      stack: ['Docker', 'AWS Fargate', 'AWS ECS', 'Browser automation', 'Load testing'],
+      meta: 'OneCG · Consultant engineer',
+    },
+    {
       name: 'QuickTest — Automated Evaluation for Voice AI Agents',
       blurb:
         'A testing platform that validates voice agents before and after release. Synthetic personas call a bot through scripted scenarios, every run is scored against evaluation criteria with pass/fail logic, and results roll up into session and organisation reports, so a prompt or model change is caught before customers hear it. Failed production calls can be saved and reused as regression tests. It replaced most manual call testing for the team.',
