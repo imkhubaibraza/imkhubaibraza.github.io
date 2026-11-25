@@ -56,6 +56,13 @@ import { profile } from '../data/profile.js';
                     {p.href && <span class="arrow">-&gt;</span>}
                   </h3>
                   <p>{p.blurb}</p>
+                  {p.flow && (
+                    <ol class="card-flow">
+                      {p.flow.map((step) => (
+                        <li>{step}</li>
+                      ))}
+                    </ol>
+                  )}
                   {p.stack && (
                     <p class="card-stack">
                       {p.stack.map((s) => (
@@ -377,6 +384,20 @@ import { profile } from '../data/profile.js';
     display: block;
     color: inherit;
     text-decoration: none;
+  }
+
+  .card-flow {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0.9rem 0 0;
+    padding-left: 1.25rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  .card-flow li::marker {
+    color: var(--accent);
+    font-size: 0.8125rem;
   }
 
   .card-stack {

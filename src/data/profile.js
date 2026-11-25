@@ -32,7 +32,22 @@ export const profile = {
     mentoring: 'I’d love to share what I’ve learned with junior engineers, help them build their skills, and support them as they grow in their careers. If you’re starting out and looking for guidance, get in touch.',
   },
 
+  // `flow` (optional) renders as a numbered "how it works" list under the blurb.
   projects: [
+    {
+      name: 'Avoxa — Multi-Agent Testing for Voice and Chat AI Agents',
+      blurb:
+        'My own product. An AI caller agent phones or chats with a company’s AI agent the way a real customer would, then a judge agent grades the conversation, and the dashboard shows what passed, what failed and why. It calls over real phone lines, handles touch-tone menus, tests in English, Arabic and other languages, and keeps memory per scenario so repeat runs build on earlier ones.',
+      flow: [
+        'A run queues every scenario × customer persona and works through them a few at a time.',
+        'The caller agent dials the target over SIP, listens to the greeting or menu first, then speaks or presses keys turn by turn until its goal is met or the call is transferred.',
+        'A judge model grades the transcript by intent against the scenario’s checks and records whose side failed: the agent under test, or ours.',
+        'Results go out by webhook and email; a failure on our side is retried once.',
+      ],
+      stack: ['TypeScript', 'Node.js', 'React', 'LiveKit Agents', 'SIP', 'LLM-as-judge', 'SQLite + Drizzle', 'Cloudflare R2', 'Docker'],
+      meta: 'Founder & engineer · 2026 · avoxa.app',
+      href: 'https://avoxa.app',
+    },
     {
       name: 'QuickTest — Automated Evaluation for Voice AI Agents',
       blurb:
@@ -46,6 +61,18 @@ export const profile = {
         'A real-time voice agent for customer calls. It uses LLM tool calling to look up data and take actions in back-end systems, handles speech and keypad (DTMF) input, and transfers the call to a person with context when needed. The back end handles latency, fragmented and duplicated responses, and call lifecycle edge cases.',
       stack: ['Python', 'FastAPI', 'LangGraph', 'Function calling', 'Pipecat', 'ElevenLabs', 'Deepgram', 'Twilio', 'Plivo'],
       meta: 'CloudCX · Real-time voice AI',
+    },
+    {
+      name: 'WhatsApp MCP Gateway — Tools for AI Agents',
+      blurb:
+        'A self-hosted gateway that lets AI agents work in WhatsApp through MCP: 13 tools to find chats and contacts, read and search messages, send text and files, and follow new events. One service serves local MCP over stdio, remote MCP over Streamable HTTP, and a REST API.',
+      flow: [
+        'Agents connect with a read or a write token; a read token can never send.',
+        'Every send carries an idempotency key, so a retried tool call never sends twice, and an unclear outcome is reported as unknown instead of being retried.',
+        'New messages and receipts arrive as signed events behind a cursor the agent acknowledges, with recovery scans for anything the webhook missed.',
+      ],
+      stack: ['TypeScript', 'Node.js', 'MCP', 'Streamable HTTP', 'REST API', 'Docker'],
+      meta: 'Personal project · 2026',
     },
     {
       name: 'TransVoice — Real-Time Translated Calling',
