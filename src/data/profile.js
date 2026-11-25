@@ -17,7 +17,7 @@ export const profile = {
     mutedFrom: 2,
   },
 
-  bio: 'I design and build agentic AI systems, real-time voice agents, and enterprise automation platforms. My focus is reliable AI workflows that reason, use tools, manage memory, and take action in complex environments.',
+  bio: 'I’m a senior AI engineer and full-stack developer with 8+ years of experience building production AI systems. I specialise in agentic AI, RAG and voice AI: agent workflows with LangGraph and LangChain, tool calling and MCP servers, on Python and FastAPI back ends on AWS.',
 
   expertise: [
     'I’ve built and scaled AI systems for telecommunications, healthcare, customer support, and enterprise automation — from conversational AI and IVR to multi-step orchestration and low-latency voice infrastructure supporting thousands of concurrent interactions.',
@@ -34,11 +34,18 @@ export const profile = {
 
   projects: [
     {
-      name: 'QuickTest — Voice Agent Regression Testing',
+      name: 'QuickTest — Automated Evaluation for Voice AI Agents',
       blurb:
-        'A testing platform for voice AI. Synthetic personas call a bot through scripted scenarios, every run is scored against evaluation criteria, and results roll up into session and organisation reports — so a prompt or model change gets caught before customers hear it. Runs scheduled across timezones with exportable reports.',
+        'A testing platform that validates voice agents before and after release. Synthetic personas call a bot through scripted scenarios, every run is scored against evaluation criteria with pass/fail logic, and results roll up into session and organisation reports, so a prompt or model change is caught before customers hear it. Failed production calls can be saved and reused as regression tests. It replaced most manual call testing for the team.',
       stack: ['React', 'TypeScript', 'Supabase', 'AWS Amplify', 'LLM evaluation'],
-      meta: 'Product engineering lead · 2026',
+      meta: 'CloudCX · Product engineering lead · 2026',
+    },
+    {
+      name: 'Enterprise Voice Agent with Tool Calling and Live-Agent Handoff',
+      blurb:
+        'A real-time voice agent for customer calls. It uses LLM tool calling to look up data and take actions in back-end systems, handles speech and keypad (DTMF) input, and transfers the call to a person with context when needed. The back end handles latency, fragmented and duplicated responses, and call lifecycle edge cases.',
+      stack: ['Python', 'FastAPI', 'LangGraph', 'Function calling', 'Pipecat', 'ElevenLabs', 'Deepgram', 'Twilio', 'Plivo'],
+      meta: 'CloudCX · Real-time voice AI',
     },
     {
       name: 'TransVoice — Real-Time Translated Calling',
@@ -48,17 +55,24 @@ export const profile = {
       meta: 'Architect & lead engineer · 2026',
     },
     {
-      name: 'Production Voice Agents',
+      name: 'RAG Knowledge Assistant for Business Content',
       blurb:
-        'Real-time conversational agents on customer-facing phone and web channels: barge-in handling, tool calls into business systems, warm transfer to humans, and the latency budget work that keeps a conversation feeling like a conversation.',
-      stack: ['Vapi', 'ElevenLabs', 'Pipecat', 'Twilio', 'Asterisk'],
-      meta: 'CloudCX · Real-time voice AI',
+        'A retrieval-augmented assistant that answers questions from a company’s own content. It collects content from business websites, embeds it with OpenAI embeddings, stores it in Pinecone, and retrieves the most relevant sources as context so the LLM writes a grounded answer.',
+      stack: ['Python', 'LangChain', 'RAG', 'Pinecone', 'OpenAI API', 'Web scraping'],
+      meta: 'LLM applications',
     },
     {
-      name: 'Invoice OCR Pipeline',
+      name: 'Automatic Description Generation from Images',
       blurb:
-        'An OCR pipeline that reads invoices and pulls structured fields out of them, replacing manual data entry in a high-volume document workflow. Trained and served on SageMaker, containerised for repeatable deployment.',
-      stack: ['Python', 'AWS SageMaker', 'OCR', 'Docker'],
+        'Listing descriptions written from apartment photos and data. The pipeline removes duplicate photos, classifies each photo by room type, counts bedrooms and bathrooms, detects amenities, then generates the description with a transformer model (table to text).',
+      stack: ['Computer vision', 'Object detection', 'Transformers', 'PyTorch'],
+      meta: 'ML engineering',
+    },
+    {
+      name: 'Information Extraction from Invoices',
+      blurb:
+        'An OCR system built on PaddleOCR that reads invoices and extracts their fields, replacing manual data entry for a small business. Deployed with a SageMaker Pipeline for continuous training and deployment, with model monitoring and version control.',
+      stack: ['Python', 'PaddleOCR', 'AWS SageMaker', 'Docker'],
       meta: 'ML engineering · 2022',
       href: 'https://github.com/imkhubaibraza/invoiceOCR',
     },
@@ -76,13 +90,16 @@ export const profile = {
     { company: 'CloudCX', context: 'Contract · Remote · Greater London, UK', roles: [
       { title: 'AI Solution Architect', dates: 'Aug 2025 — Present' },
       { title: 'Senior Software Engineer', dates: 'Apr 2023 — Aug 2025' },
-    ], summary: 'Founding engineer at CloudCX, helping grow the business from £0 to £1 million in annual recurring revenue (ARR). Built agentic AI systems, real-time voice agents, and enterprise automation.' },
+    ], summary: 'Founding engineer at CloudCX, helping grow the business from £0 to £1 million in annual recurring revenue (ARR). Built QuickTest, the automated test platform for our voice agents, and in-house voice agents on Vapi, ElevenLabs and Pipecat. Designed stateful, multi-step agent workflows with LangGraph and LangChain, exposed internal tools to agents through MCP servers, and built Python and FastAPI agent back ends on AWS that manage call state for concurrent live calls.' },
     { company: 'Metric', context: 'Full-time · Hybrid · Islamabad, Pakistan', roles: [
       { title: 'Head of Engineering', dates: 'Nov 2021 — Feb 2023' },
-    ], summary: 'Helped scale Metric from 0 to 100,000 app downloads as Head of Engineering. Joined as the second employee in the new tech team and helped grow engineering from 1 to 10 people. Established hiring and onboarding processes, improved releases and CI/CD with Jenkins, and resolved Firestore database performance issues.' },
+    ], summary: 'Scaled Metric’s app from 0 to 10,000 paid users and 100,000 downloads as Head of Engineering, used by businesses in 30 sectors to track their numbers. Joined as the second employee in the new tech team and grew engineering from 1 to 10 people. Led back-end, front-end and Android developers, shaped the product vision, set up hiring and onboarding, improved releases and CI/CD with Jenkins, and resolved Firestore performance issues.' },
     { company: 'Upwork', context: 'Freelance', roles: [
       { title: 'Top Rated Freelancer', dates: 'Dec 2020 — Apr 2022' },
     ] },
+    { company: 'matix', context: 'Contract', roles: [
+      { title: 'Senior NLP Engineer', dates: '2020 — 2021' },
+    ], summary: 'Document classification and information extraction, plus back-end services on Asterisk and Twilio that streamed call audio to speech-to-text (Vosk, Google STT).' },
     { company: 'Omdena', context: 'Part-time', roles: [
       { title: 'Machine Learning Engineer', dates: 'Feb 2021 — Jul 2021' },
     ] },
@@ -91,9 +108,10 @@ export const profile = {
     ] },
   ],
 
-  // Education from the public LinkedIn listing; degree title not supplied.
+  // Education as listed on the Toptal profile.
   background: [
-    { label: 'Education', detail: 'Information Technology University · 2019–2021' },
+    { label: 'MSc Data Science', detail: 'Information Technology University, Lahore · 2019–2021' },
+    { label: 'BSc Computer Science', detail: 'Government College University, Lahore · 2015–2019' },
   ],
 
   certifications: [
@@ -109,15 +127,15 @@ export const profile = {
     { label: 'Languages', items: ['Python', 'TypeScript', 'JavaScript'] },
     {
       label: 'AI & ML',
-      items: ['PyTorch', 'LangGraph', 'LLMs', 'NLP', 'Scikit-learn', 'Pandas'],
+      items: ['LLMs', 'PyTorch', 'Transformers', 'NLP', 'Computer vision', 'Scikit-learn', 'Pandas'],
     },
     {
       label: 'Backend & Web',
-      items: ['FastAPI', 'Flask', 'React', 'Node.js', 'Docker'],
+      items: ['FastAPI', 'Flask', 'Next.js', 'React', 'Node.js', 'Supabase', 'Docker', 'Microservices'],
     },
     {
       label: 'Cloud',
-      items: ['AWS SageMaker', 'Lambda', 'EC2', 'S3', 'GCP', 'Azure', 'Firebase'],
+      items: ['AWS', 'Amazon Bedrock', 'SageMaker', 'Lambda', 'AWS Amplify', 'GCP', 'Azure', 'Firebase', 'Datadog'],
     },
     {
       label: 'Voice & Telephony',
@@ -126,6 +144,8 @@ export const profile = {
         'Pipecat',
         'LiveKit',
         'Twilio',
+        'Plivo',
+        'Retell AI',
         'Asterisk',
         'SIP',
         'WebRTC',
@@ -140,8 +160,14 @@ export const profile = {
       label: 'Agents & Evaluation',
       items: [
         'LangGraph',
+        'LangChain',
+        'MCP servers',
+        'Function calling',
+        'Claude Agent SDK',
+        'Bedrock AgentCore',
         'Multi-agent orchestration',
         'RAG',
+        'Pinecone',
         'Prompt engineering',
         'LLM evals',
         'Regression testing',
@@ -154,6 +180,11 @@ export const profile = {
       label: 'LinkedIn',
       note: '/in/muhammadkhubiabraza',
       href: 'https://www.linkedin.com/in/muhammadkhubiabraza/',
+    },
+    {
+      label: 'Toptal',
+      note: 'Verified Expert in Engineering',
+      href: 'https://www.toptal.com/developers/resume/muhammad-khubaib-raza',
     },
     {
       label: 'Email',
