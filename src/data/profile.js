@@ -37,7 +37,7 @@ export const profile = {
     {
       name: 'Avoxa — Multi-Agent Testing for Voice and Chat AI Agents',
       blurb:
-        'My own product. An AI caller agent phones or chats with a company’s AI agent the way a real customer would, then a judge agent grades the conversation, and the dashboard shows what passed, what failed and why. It calls over real phone lines, handles touch-tone menus, tests in English, Arabic and other languages, and keeps memory per scenario so repeat runs build on earlier ones.',
+        'An AI caller agent phones or chats with a company’s AI agent the way a real customer would, then a judge agent grades the conversation, and the dashboard shows what passed, what failed and why. It calls over real phone lines, handles touch-tone menus, tests in English, Arabic and other languages, and keeps memory per scenario so repeat runs build on earlier ones.',
       flow: [
         'A run queues every scenario × customer persona and works through them a few at a time.',
         'The caller agent dials the target over SIP, listens to the greeting or menu first, then speaks or presses keys turn by turn until its goal is met or the call is transferred.',
@@ -45,7 +45,7 @@ export const profile = {
         'Results go out by webhook and email; a failure on our side is retried once.',
       ],
       stack: ['TypeScript', 'Node.js', 'React', 'LiveKit Agents', 'SIP', 'LLM-as-judge', 'SQLite + Drizzle', 'Cloudflare R2', 'Docker'],
-      meta: 'Founder & engineer · 2026 · avoxa.app',
+      meta: 'Consultant engineer · 2026 · avoxa.app',
       href: 'https://avoxa.app',
     },
     {
