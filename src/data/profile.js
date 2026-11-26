@@ -58,7 +58,7 @@ export const profile = {
         'The same setup scales out to run load tests when needed.',
       ],
       stack: ['Playwright', 'AI agents', 'Docker', 'AWS Fargate', 'AWS ECS', 'Load testing'],
-      meta: 'OneCG · Consultant engineer',
+      meta: 'OneCG · Consultant engineer · Nov 2026',
     },
     {
       name: 'QuickTest — Automated Evaluation for Voice AI Agents',
