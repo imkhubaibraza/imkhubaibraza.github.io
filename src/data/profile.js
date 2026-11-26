@@ -49,15 +49,15 @@ export const profile = {
       href: 'https://avoxa.app',
     },
     {
-      name: 'In-House Browser Automation Platform',
+      name: 'In-House Browser Automation Platform for AI Agents',
       blurb:
-        'Browser automation infrastructure built in house to replace paid hosted-browser services such as Browserbase and Kernel. The browsers run in Docker containers on our own AWS Fargate, which cut the cost from about $10,000 to $500 and keeps sessions and data inside our own cloud account.',
+        'Browser infrastructure that AI agents use to browse and act on the web, built in house to replace paid hosted-browser services such as Browserbase and Kernel. Playwright browsers run in Docker containers on our own AWS Fargate, which cut the cost from about $10,000 a month to $500 a month with unlimited concurrency, and keeps sessions and data inside our own cloud account.',
       flow: [
-        'Each automation job gets its own browser in a Docker container.',
-        'Containers run on AWS Fargate, so there are no servers to manage and capacity follows demand.',
+        'An AI agent asks for a browser, and its job gets its own Playwright browser in a Docker container.',
+        'Containers run on AWS Fargate, so there are no servers to manage and capacity follows demand, with no cap on concurrent browsers.',
         'The same setup scales out to run load tests when needed.',
       ],
-      stack: ['Docker', 'AWS Fargate', 'AWS ECS', 'Browser automation', 'Load testing'],
+      stack: ['Playwright', 'AI agents', 'Docker', 'AWS Fargate', 'AWS ECS', 'Load testing'],
       meta: 'OneCG · Consultant engineer',
     },
     {
